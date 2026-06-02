@@ -84,7 +84,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="/cv.pdf" download className="btn-primary">
+            <a href="/Resume-Frontend-NguyenTrongNhan.pdf" download className="btn-primary">
               Download CV
             </a>
             <a href="#projects" className="btn-ghost">
