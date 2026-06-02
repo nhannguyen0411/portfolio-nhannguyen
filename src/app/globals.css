@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0d0d1a;
+  --bg-secondary: #12122a;
+  --accent-purple: #7c3aed;
+  --accent-cyan: #a78bfa;
+  --highlight: #c084fc;
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --glow: rgba(124, 58, 237, 0.4);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(124, 58, 237, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-cyan;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-bold text-text-primary md:text-4xl lg:text-[2.75rem];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-accent-purple px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-purple/30 transition-all hover:bg-violet-600 hover:shadow-accent-purple/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-purple;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl border border-accent-purple/50 bg-transparent px-6 py-3 text-sm font-semibold text-accent-cyan transition-all hover:border-accent-purple hover:bg-accent-purple/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-purple;
+  }
+
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .exp-card:hover {
+    transform: scale(1.02);
+    border-color: rgba(124, 58, 237, 0.45);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+  }
+
+  .tag-mono {
+    @apply rounded-md border border-accent-purple/20 bg-accent-purple/10 px-2.5 py-1 font-mono text-xs text-accent-cyan;
+  }
+
+  .mockup-frame {
+    @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50 shadow-2xl shadow-black/40;
+  }
+}
+
+/* Background blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.blob-top {
+  width: 600px;
+  height: 600px;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+  animation: blob-float 20s ease-in-out infinite;
+}
+
+.blob-bottom {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(67, 56, 202, 0.1) 0%, transparent 70%);
+  animation: blob-float 24s ease-in-out infinite reverse;
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-45%) translateY(30px);
+  }
+}
+
+/* Hero orb */
+.hero-orb {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.55) 0%, rgba(124, 58, 237, 0.1) 50%, transparent 70%);
+  filter: blur(40px);
+  animation: orb-pulse 4s ease-in-out infinite;
+}
+
+@keyframes orb-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Brand orb section */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-ring {
+  animation: orbit-spin 40s linear infinite;
+}
+
+.orbit-dot {
+  animation: orbit-spin 25s linear infinite reverse;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Tech badge hover */
+.tech-badge {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-badge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .blob,
+  .hero-orb,
+  .orbit-ring,
+  .orbit-dot,
+  .typewriter-cursor {
+    animation: none !important;
+  }
+}
