@@ -14,37 +14,47 @@ export function Hero() {
     <section id="hero" className="scroll-mt-24 px-4 pb-16 pt-24 md:px-8 md:pb-24 md:pt-28">
       <div className="mx-auto max-w-6xl">
         {/* Part A — Greeting + Avatar */}
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-          <motion.div
-            initial={hydrated ? { opacity: 0, x: -20 } : false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-sm text-text-muted">
-              Hello! I Am{" "}
-              <span className="font-semibold text-highlight">{personal.name}</span>
-            </p>
-
-            <blockquote className="mt-8 font-display text-3xl font-bold leading-snug text-text-primary md:text-4xl lg:text-5xl">
-              &ldquo;Turns complex problems
-              <br />
-              into elegant products.&rdquo;
-            </blockquote>
-            <p className="mt-3 text-sm italic text-text-muted">
-              Because if the code doesn&apos;t scale, what else can?
-            </p>
-          </motion.div>
-
+        <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-14">
           <motion.div
             className="order-first lg:order-none"
             initial={hydrated ? { opacity: 0, scale: 0.95 } : false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <p className="mb-2 text-center text-sm text-text-muted lg:text-left">
-              A developer who
-            </p>
             <HeroAvatar />
+          </motion.div>
+
+          <motion.div
+            initial={hydrated ? { opacity: 0, x: -20 } : false}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative"
+          >
+            <p className="text-sm text-text-muted">
+              Hello! I Am{" "}
+              <span className="font-semibold text-highlight">{personal.name}</span>
+            </p>
+
+            <p className="mt-8 text-base text-highlight underline decoration-highlight/60 underline-offset-4">
+              A Developer who
+            </p>
+
+            <h1 className="mt-2 max-w-2xl font-display text-4xl font-semibold leading-[1.08] text-text-primary sm:text-5xl md:text-6xl">
+              Builds ideas
+              <br />
+              into scalable{" "}
+              <span className="bg-gradient-to-r from-accent-purple via-highlight to-accent-purple bg-clip-text text-transparent">
+                products...
+              </span>
+            </h1>
+            <p className="mt-3 text-sm text-text-muted">
+              Because code should grow with your vision, not against it.
+            </p>
+
+            <span
+              className="pointer-events-none absolute -right-10 top-6 hidden h-20 w-20 rounded-full border border-accent-purple/30 blur-[1px] lg:block"
+              aria-hidden
+            />
           </motion.div>
         </div>
 

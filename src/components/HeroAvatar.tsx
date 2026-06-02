@@ -1,7 +1,12 @@
 export function HeroAvatar() {
   return (
     <div className="relative mx-auto flex w-full max-w-md items-center justify-center py-8 md:max-w-lg">
-      <div className="hero-orb left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden />
+      <div
+        className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2"
+        aria-hidden
+      >
+        <div className="hero-orb" />
+      </div>
       <svg
         viewBox="0 0 320 360"
         className="relative z-10 h-auto w-64 md:w-72"

@@ -40,6 +40,21 @@ export function FeaturedProjects() {
                     </span>
                   ))}
                 </div>
+                {project.links && project.links.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-xs font-medium text-highlight underline decoration-highlight/40 underline-offset-4 transition-colors hover:text-text-primary"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             );
 

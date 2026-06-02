@@ -72,6 +72,7 @@ export type FeaturedProject = {
   title: string;
   description: string;
   metrics?: string[];
+  links?: { label: string; href: string }[];
   tags: string[];
   layout: "text-left" | "text-right";
   device: "browser" | "phone";
@@ -86,6 +87,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "A multi-product SaaS platform supporting enterprise workflows — e-signature with dynamic PDF positioning, invoice sync and classification, PIT tax management, and HR flows. Built across web and mobile for ZAMO.",
     metrics: ["↓ 30% page load time", "Removed browser extension dependency"],
+    links: [{ label: "Koffi Prod", href: "https://koffi.vn" }],
     tags: ["React", "Next.js", "Flutter", "TailwindCSS", "Turborepo", "TanStack"],
     layout: "text-left",
     device: "browser",
@@ -98,6 +100,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "An AI-powered mobile language learning app where users practice speaking through real-time conversational exercises. Reduced AI response latency from 3s to 1.7s via chunked audio streaming architecture.",
     metrics: ["↓ Response time: 3s → 1.7s"],
+    links: [{ label: "Buddy Talk Prod", href: "https://buddytalk.koffi.vn/" }],
     tags: ["Flutter", "Dart", "Riverpod", "Audio Streaming", "REST API"],
     layout: "text-right",
     device: "phone",
